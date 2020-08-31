@@ -1,0 +1,9 @@
+dev\dao\PlatDaoMemoireTest.class
+dev\dao\PlatDaoFichierIntegrationTest.class
+dev\dao\BasePlatDaoIntegrationTest.class
+dev\dao\PlatDaoJpaIntegrationTest.class
+dev\repository\IngredientRepositoryIntegrationTest.class
+dev\service\PlatServiceVersion2IntegrationTest.class
+dev\service\PlatServiceVersion1Test.class
+dev\repository\BaseRepositoryIntegrationTest.class
+dev\repository\PlatRepositoryIntegrationTest.class

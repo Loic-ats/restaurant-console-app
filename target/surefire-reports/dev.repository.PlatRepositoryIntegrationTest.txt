@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: dev.repository.PlatRepositoryIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.412 s - in dev.repository.PlatRepositoryIntegrationTest
