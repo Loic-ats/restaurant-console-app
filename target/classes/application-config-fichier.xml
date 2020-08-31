@@ -8,14 +8,6 @@ http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/util
 http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <!--  IDao dao = new DaoBlague(); -->
-    <bean id="dao" class="dev.dao.PlatDaoFichier"/>
-
-   <!-- IService service = new Service1(dao) -->
-    <bean id="service" class="dev.service.PlatServiceVersion1">
-        <constructor-arg name="dao" ref="dao"/> <!-- <bean id="dao"> -->
-    </bean>
-
 	<!-- Configuration d'un bean dont l'identifiant est "scanner". Il est créé 
 		à partir de la classe "java.util.Scanner" -->
 	<bean id="scanner" class="java.util.Scanner">
@@ -24,6 +16,17 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 			<util:constant static-field="java.lang.System.in"></util:constant>
 		</constructor-arg>
 	</bean>
+	
+	<bean id="platDaoMemoire" class="dev.dao.PlatDaoMemoire"/>
+  
+    <bean id="dao" class="dev.dao.PlatDaoFichier">
+    <constructor-arg index="0"  value="E:\Developpements\Projets\Spring\restaurant-console-app\restaurant.txt"/>
+    </bean>
+
+   <!-- IService service = new Service1(dao) -->
+    <bean id="service" class="dev.service.PlatServiceVersion1">
+        <constructor-arg name="dao" ref="dao"/> <!-- <bean id="dao"> -->
+    </bean>
 	
 	<!-- On créer le bean Menu -->
 	    <bean id="Menu" class="dev.ihm.Menu" scope="prototype">
