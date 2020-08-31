@@ -7,10 +7,13 @@ import dev.ihm.options.OptionListerPlats;
 import dev.ihm.options.OptionTerminer;
 import dev.service.IPlatService;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -28,6 +31,38 @@ public class Menu {
         this.scanner = scanner;
     }
 
+    @Autowired
+    
+    public Menu(Scanner scanner, List <IOptionMenu> optionMenus) {
+    	
+    	
+        // option 1 => :
+        //optionMenus.sort(Comparator.comparing(IOptionMenu:getPoids));
+
+        // option 2 => ->
+        optionMenus.sort((opt1, opt2) -> Integer.compare(opt1.getPoids(), opt2.getPoids()));
+
+        // option 3 => Classe anonyme
+        /*optionMenus.sort(new Comparator<IOptionMenu>() {
+            @Override
+            public int compare(IOptionMenu o1, IOptionMenu o2) {
+                return Integer.compare(o1.getPoids(), o2.getPoids());
+            }
+        });*/
+    	
+    	
+    	int index = 1;
+    	
+    	for (IOptionMenu optionMenu : optionMenus) {
+    		actions.put(index, optionMenu);
+    		index ++;
+    	}
+    	
+    	this.scanner= scanner;
+    	
+    }
+   
+    
     public void afficher() {
 
         boolean continuer = true;
@@ -63,3 +98,5 @@ public class Menu {
         return this.menu;
     }
 }
+
+
