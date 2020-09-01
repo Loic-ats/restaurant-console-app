@@ -1,9 +1,9 @@
 package dev.dao;
 
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +23,7 @@ private PlatDaoMemoire platDaoMemoire;
 	void listerPlatsVideALInitialisation() {
 	
 	List<Plat> resultat = platDaoMemoire.listerPlats();
-	
+		
 	assertEquals(0, resultat.size());
 	
 	}
@@ -31,12 +31,13 @@ private PlatDaoMemoire platDaoMemoire;
 @Test
 	void ajouterPlatCasPassants() {
 	
-	String Pâtescarbonara;
+	String Pâtescarbonara = null;
 	
-	List<Plat> 	resultat = platDaoMemoire.ajouterPlat(Pâtescarbonara,15);
+	platDaoMemoire.ajouterPlat(Pâtescarbonara,55);
+	
+	List<Plat> 	resultat = platDaoMemoire.listerPlats();
 	
 	assertEquals(1, resultat.size());
-	
-	
+		
 	}
 }
