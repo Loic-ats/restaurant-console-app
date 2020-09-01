@@ -27,7 +27,7 @@ public class PlatServiceVersion1Test {
     
     @Test
     public void testAjouterPlatInvalide() throws PlatException {
-    	assertThrows(PlatException.class,()-> plat.ajouterPlat("pâte Carbonara", 20)) ;
+    	assertThrows(PlatException.class,()-> plat.ajouterPlat("pate carbonara", 20)) ;
 
     }
     
@@ -35,7 +35,7 @@ public class PlatServiceVersion1Test {
     @Test
     public void testAjouterPlatPrixInvalide() throws PlatException {
     
-    	assertThrows(PlatException.class,()-> plat.ajouterPlat("Tarte Légumes", 5)) ;
+    	assertThrows(PlatException.class,()-> plat.ajouterPlat("Tarte Légumes", 100)) ;
 
     }
     
