@@ -9,6 +9,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import dev.dao.PlatDaoFichier;
 import dev.dao.PlatDaoMemoire;
 import dev.entite.Plat;
 import dev.exception.PlatException;
@@ -21,7 +23,7 @@ public class PlatServiceVersion2IntegrationTest {
 
 	// injection du bean à tester, on demande au context spring une instance de la classe
 	@Autowired 
-	private PlatServiceVersion2 platserviceVersion2;
+	private PlatServiceVersion2  platserviceVersion2;
 
 	
 	@Test
