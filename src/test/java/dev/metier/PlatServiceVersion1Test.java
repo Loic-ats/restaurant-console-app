@@ -1,12 +1,8 @@
 package dev.metier;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-
-import java.util.Arrays;
-import java.util.List;
-
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -31,7 +27,7 @@ public class PlatServiceVersion1Test {
     
     @Test
     public void testAjouterPlatInvalide() throws PlatException {
-    	assertThrows(PlatException.class,()-> plat.ajouterPlat("pâtes Carbo", 20)) ;
+    	assertThrows(PlatException.class,()-> plat.ajouterPlat("pâte Carbonara", 20)) ;
 
     }
     
@@ -42,5 +38,12 @@ public class PlatServiceVersion1Test {
     	assertThrows(PlatException.class,()-> plat.ajouterPlat("Tarte Légumes", 5)) ;
 
     }
+    
+    @Test
+    public void MethodeInvoque(){
+    
+    	plat.ajouterPlat("Tarte Légumes", 600);
+    	verify(dao, atLeastOnce()).ajouterPlat("Tarte Légumes", 600);
+      }
 
 }
