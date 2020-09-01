@@ -2,6 +2,7 @@ package dev.dao;
 
 
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
@@ -23,8 +24,8 @@ private PlatDaoMemoire platDaoMemoire;
 	void listerPlatsVideALInitialisation() {
 	
 	List<Plat> resultat = platDaoMemoire.listerPlats();
-		
-	assertEquals(0, resultat.size());
+	
+	assertThat (resultat.size()).isEqualTo(0);
 	
 	}
 

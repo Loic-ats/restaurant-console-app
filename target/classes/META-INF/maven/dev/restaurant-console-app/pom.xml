@@ -48,11 +48,23 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 
 	</dependencies>
 
-<!-- On complet la configuaration Maven celle-ci permet de mettre à jour le plugin Maven maven-surefire-plugin pour le support des tests
-JUnit 5 par Maven. -->
+	<!-- On complet la configuaration Maven celle-ci permet de mettre à jour 
+		le plugin Maven maven-surefire-plugin pour le support des tests JUnit 5 par 
+		Maven. -->
 
 	<build>
 		<plugins>
