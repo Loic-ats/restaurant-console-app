@@ -29,7 +29,7 @@ public class Ihm {
             System.out.println(texte);
         }
 
-        System.out.println("Les voyages");
+        System.out.println("Les plat");
         for (Plat plat : this.service.listerPlats()) {
             System.out.println("prix="+ plat.getPrixEnCentimesEuros() + " nom=" + plat.getNom());
         }

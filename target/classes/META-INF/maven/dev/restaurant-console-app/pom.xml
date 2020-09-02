@@ -67,7 +67,7 @@
 			<scope>test</scope>
 		</dependency>
 
-<!-- Dependance pour faire le JDBC avec Spring  -->
+		<!-- Dependance pour faire le JDBC avec Spring -->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -78,6 +78,14 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+
+		<!-- Test d'intégration avec H2 -->
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
