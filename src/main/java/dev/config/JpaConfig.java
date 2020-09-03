@@ -12,7 +12,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableTransactionManagement
+@EnableTransactionManagement //Permet d'utiliser le @Transational
 public class JpaConfig {
 
 	// Configuration de l'EntityManagerFactory
