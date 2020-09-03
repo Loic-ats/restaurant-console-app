@@ -104,6 +104,13 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- On ajoute les dépendances vers spring data -->
+		
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<!-- On complet la configuaration Maven celle-ci permet de mettre à jour 
