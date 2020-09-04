@@ -12,20 +12,25 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "plat")
 public class Plat {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
+	@Column(name = "nom", length = 50, nullable = false, unique = true)
 	private String nom;
-	@Column(name = "prix")
+
+	@Column(name = "prix", length = 10, nullable = false)
 	private Integer prixEnCentimesEuros;
 
 	@ManyToMany
 	@JoinTable(name = "plat_ingredient", joinColumns = @JoinColumn(name = "plat_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "ingredient_id", referencedColumnName = "id"))
-	private List<Ingredient> ingredients = new ArrayList<>();
+	private List<Ingredient> listIngredients = new ArrayList<>();
 
 	public int getId() {
 		return id;
@@ -35,12 +40,12 @@ public class Plat {
 		this.id = id;
 	}
 
-	public List<Ingredient> getIngredients() {
-		return ingredients;
+	public List<Ingredient> getListIngredients() {
+		return listIngredients;
 	}
 
-	public void setIngredients(List<Ingredient> ingredients) {
-		this.ingredients = ingredients;
+	public void setListIngredientss(List<Ingredient> listIngredients) {
+		this.listIngredients = listIngredients;
 	}
 
 	public Plat() {

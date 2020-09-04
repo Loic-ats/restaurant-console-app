@@ -2,7 +2,6 @@ package dev.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.awt.print.Pageable;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.DirtiesContext;
@@ -68,7 +68,6 @@ public class PlatRepositoryIntegrationTest {
 		Pageable firstPageWithTwoElements = PageRequest.of(0, 2, Sort.by(Sort.Direction.ASC, "nom"));
 
 		Page<Plat> pagePlat = dao.findAll(firstPageWithTwoElements);
-
 		assertThat(pagePlat.getSize()).isEqualTo(2);
 		assertThat(pagePlat.getContent().get(0).getId()).isEqualTo(4);
 
@@ -138,26 +137,17 @@ public class PlatRepositoryIntegrationTest {
 	}
 
 	@Test
-	void findIngredientsByPlatNom() {
-
-		List<Ingredient> listIngDePlat = dao.findIngredientsByPlatNom("Moules-frites");
-
-		assertThat(listIngDePlat.size()).isEqualTo(6);
-		assertThat(listIngDePlat.get(0).getNom()).isEqualTo("Moule");
-
-	}
-
-	@Test
 	void testFindByid() {
 		Optional<Plat> p = dao.findById(1);
-		assertThat(p.get()).isEqualTo("Magret de canard");
+		assertThat(p.get().getNom()).isEqualTo("Magret de canard");
 	}
 
 	@Test
-	@Transactional
 	void testFindByNomWithIngredients() {
-		Plat plat = dao.findIngredientByPlatNom("Magret de canard");
-		assertThat(plat.getIngredients()).extracting(Ingredient.getNom()).contains("Sel");
+		Plat plat = dao.findByNomWithIngredients("Magret de canard")
+				.orElseThrow(() -> new RuntimeException("'Magret de canard' existe !!!"));
+
+		assertThat(plat.getListIngredients()).extracting(Ingredient::getNom).contains("Sel");
 
 	}
 
@@ -173,9 +163,10 @@ public class PlatRepositoryIntegrationTest {
 
 		long CountAfter = dao.count();
 
-		assertThat();
+		assertThat(dao.findAll()).extracting(Plat::getNom).contains(plat.getNom());
 	}
 
+	@Transactional
 	@Test
 	void testChangerNom() {
 
